@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react'
+import { View } from 'react-native'
+import { t } from 'react-native-tailwindcss'
+import BillingForm from './src/form/BillingForm'
 
 export default function App() {
+  const [buildInValidation, setBuildInValidation] = useState(false)
+
+  const toggleForm = () => {
+    setBuildInValidation((prev) => !prev)
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <BillingForm />
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = {
+  container: [t.flex1, t.justifyCenter, t.itemsCenter, t.p6, t.bgGray200],
+}
